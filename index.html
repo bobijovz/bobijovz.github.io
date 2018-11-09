@@ -1,10 +1,132 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>chu chu</title>
+<title>Log Me</title>
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+<style>
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid gray;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+var stamp = new Date();
+var date = stamp.toLocaleDateString();
+var time = stamp.toLocaleTimeString();
+var dayTime = stamp.getHours() > 12 ? 'PM' : 'AM';
+var start = new Date(stamp.getFullYear(), stamp.getMonth(), 1);
+
+
+
+
+function refreshStamp(){
+stamp = new Date();
+date = stamp.toLocaleDateString();
+time = stamp.toLocaleTimeString();
+dayTime = stamp.getHours() > 12 ? 'PM' : 'AM';
+	$("#t").text('Today is ' + date + ' ~ ' + time ); 
+}
+
+
+function setCookie(cname,cvalue) {
+    window.localStorage.setItem(cname, cvalue);
+}
+
+function getCookie(cname) {
+    return window.localStorage.getItem(cname);
+}
+
+
+function setTimeIn(){
+  refreshStamp();
+  if(getCookie(date + '~IN' ) == null){
+	setCookie(date + '~IN', time);
+	location.reload();
+  }
+}
+
+function setTimeOut(){
+  refreshStamp();
+  if(getCookie(date + '~OUT' ) == null){
+	setCookie(date + '~OUT', time);
+	location.reload();
+  }
+}
+
+
+
+$(document).ready(function(){
+
+	var tempDate = start;
+	while (tempDate.getTime() < stamp.getTime()){
+		if(tempDate.getDay() == 6 || tempDate.getDay() == 0){
+			var markup = "<tr><td colspan='3'></td></tr>";
+          $("table tbody").append(markup);
+		} else {
+		  var tmpd = tempDate.toLocaleDateString();
+          var tmpin = getCookie(tmpd + '~IN') == null ? 'None' : getCookie(tmpd + '~IN') ;
+          var tmpout = getCookie(tmpd + '~OUT') == null ? 'None' : getCookie(tmpd + '~OUT') ;
+          var markup = "<tr><td>" +tmpd+ "</td><td>" + tmpin + "</td><td>" + tmpout + "</td></tr>";
+          $("table tbody").append(markup);
+		}
+        tempDate.setDate(tempDate.getDate() + 1);
+	}
+   	setTimeIn();
+    $( "#in" ).click(function() {
+  		setTimeIn();
+	});
+	$( "#out" ).click(function() {
+  		setCookie(date + '~OUT', time);
+		location.reload();
+	});
+	$( "#changeIn" ).click(function() {
+		var val = prompt("Format mm/dd/yyyy HH:mm (use 24 hr format) :");
+		var newVal = new Date(val);
+  		setCookie(newVal.toLocaleDateString() + '~IN', newVal.toLocaleTimeString());
+		location.reload();
+	});
+	$( "#changeOut" ).click(function() {
+		var val = prompt("Format mm/dd/yyyy HH:mm (use 24 hr format) :");
+		var newVal = new Date(val);
+  		setCookie(newVal.toLocaleDateString() + '~OUT', newVal.toLocaleTimeString());
+		location.reload();
+	});
+	$(window).focus(function() {
+		refreshStamp();
+	});
+	$(window).on('unload', function(){
+         setCookie(date + '~OUT', time);
+	});
+});
+</script>
 </head>
 <body>
-<h1>TESTING LANG</h1>
+<h1 id="t"></h1> 
+<button id="in"> Time In </button>
+<button id="out"> Time Out </button></br>
+<button id="changeIn"> Change In</button>
+<button id="changeOut"> Change Out</button>
+
+<table border="1" >
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time in</th>
+                <th>Time out</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
 
 </body>
 </html>
-
