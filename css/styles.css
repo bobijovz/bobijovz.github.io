@@ -7272,6 +7272,11 @@ h3 {
     #mainNav.navbar-shrink .navbar-brand {
       font-size: 1.5em; } }
 
+    .circular--square {
+  border-radius: 50%;
+}
+
+
 .masthead {
   padding-top: calc(6rem + 74px);
   padding-bottom: 6rem; }
@@ -7281,14 +7286,13 @@ h3 {
   .masthead .masthead-subheading {
     font-size: 1.25rem; }
   .masthead .masthead-avatar {
-    background-position: center bottom;
-  background-size: cover;
-  -webkit-flex: 0 0 auto;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  width: calc(25% - 10px);
-
-    }
+    display: inline-block;
+  position: relative;
+  width: auto;
+  height: 250px;
+  overflow: hidden;
+    border-radius: 50%;
+  }
 
 @media (min-width: 992px) {
   .masthead {
@@ -7305,6 +7309,7 @@ h3 {
   position: relative;
   display: block;
   max-width: 25rem;
+  height: 20rem;
   border-radius: 0.5rem;
   overflow: hidden; }
   .portfolio .portfolio-item .portfolio-item-caption {
@@ -7421,3 +7426,13 @@ form .row:first-child .floating-label-form-group {
 
 .btn-social {
   margin-bottom: 0.5rem; }
+
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.text {
+    display:inline-block;
+}
