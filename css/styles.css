@@ -7304,6 +7304,12 @@ h3 {
     .masthead .masthead-subheading {
       font-size: 1.5rem; } }
 
+.portfolio-modal-image{
+  display: block;
+  max-width: 20rem;
+  height: 20rem;
+}
+
 .portfolio .portfolio-item {
   cursor: pointer;
   position: relative;
