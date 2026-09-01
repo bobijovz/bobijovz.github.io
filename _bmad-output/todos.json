@@ -1,0 +1,146 @@
+[
+  {
+    "id": "add-kpis-v1-acceptance",
+    "title": "Adding KPIs for V1 acceptance",
+    "description": "From prd.md: add measurable KPIs for V1 acceptance (examples: LCP<=2.5s, CLS<0.1, accessibility pass rate checklist). Purpose: make success criteria testable and prevent scope creep.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "define-case-study-acceptance-criteria",
+    "title": "Defining case study acceptance criteria",
+    "description": "Require each case study to include: problem, approach, implementation details, validation steps, and a measurable outcome (before/after metrics where possible). Source: prd.md FR-03.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "document-content-authoring-workflow",
+    "title": "Documenting content authoring workflow",
+    "description": "Create docs/CONTENT_WORKFLOW.md describing frontmatter schema, publish flow, and review checklist to ensure content extensibility without breaking templates. Source: prd.md FR-14.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "add-claim-verification-checklist",
+    "title": "Adding claim verification checklist",
+    "description": "Add a verification checklist and source-audit step for the PRD requirement \"free of fabricated professional claims\"; specify required evidence fields and an approval step.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "specify-analytics-measurement",
+    "title": "Specifying analytics measurement",
+    "description": "Define analytics event names, provider (e.g., GA4), and a minimal event spec (page_view, contact_click, case_study_view) plus where to store the spec. Source: implementation-plan.md Production/Analytics.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "add-deployment-rollback-strategy",
+    "title": "Adding deployment and rollback strategy",
+    "description": "Add a deployment checklist including health checks, canary rollout plan, rollback script and post-deploy validation steps to the Production epic or architecture docs.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "define-test-coverage-targets",
+    "title": "Defining test coverage targets",
+    "description": "Specify minimum test thresholds and types (unit, integration, e2e/smoke) and where results are recorded; include acceptance criteria referencing these targets.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "expand-accessibility-checklist",
+    "title": "Expanding accessibility checklist",
+    "description": "List required WCAG 2.2 AA checkpoints for primary flows and describe concrete test steps (keyboard nav, focus states, contrast checks) to verify accessibility.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "validate-mdx-frontmatter",
+    "title": "Adding frontmatter validation for MDX",
+    "description": "Implement build-time frontmatter schema validation for MDX; supply sensible defaults when fields are missing and emit build warnings/errors as appropriate to prevent runtime failures.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "add-performance-budgets",
+    "title": "Adding performance budgets",
+    "description": "Add performance budgets (example: LCP<2.5s, FCP<1.0s, CLS<0.1) and a measurement plan; document where budgets are enforced and how to measure them.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "document-privacy-data-handling",
+    "title": "Documenting privacy and data handling",
+    "description": "Create a minimal privacy/data-handling section covering contact forms and analytics: consent requirements, data retention, and minimal vendor configuration.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "define-backend-exception-flow",
+    "title": "Defining backend exception flow",
+    "description": "Clarify \"No unnecessary backend\" by defining allowed backend use cases and an exception approval flow; add to architecture.md.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "handle-absent-frontmatter",
+    "title": "Handling absent/invalid MDX frontmatter",
+    "description": "Add a code path: if frontmatter==null then supply defaults (e.g., title: \"Untitled\", slug: derive from filename) to avoid build-time errors. Source: implementation-plan.md MDX pipeline.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "limit-case-study-content-length",
+    "title": "Bounding case-study content length",
+    "description": "Render very long case-study content as collapsible sections and truncate previews with a \"show more\" to avoid layout overflow and poor usability.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "image-optimization-fallback",
+    "title": "Add image optimization fallbacks",
+    "description": "Ensure image fallbacks: onImageError -> replace with placeholder; serve images with srcset and fallback sizes; handle CDN failures gracefully.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "responsive-container-constraints",
+    "title": "Add responsive container constraints",
+    "description": "Set explicit min/max container widths using CSS clamp(), e.g., max-width: clamp(320px, 60ch, 1200px), to avoid extreme layouts on very wide or narrow viewports.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "respect-reduced-motion",
+    "title": "Honor prefers-reduced-motion",
+    "description": "Respect @media (prefers-reduced-motion: reduce) and disable nonessential animations to meet accessibility needs.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  },
+  {
+    "id": "contact-js-fallback",
+    "title": "Add contact JS-disabled fallback",
+    "description": "Provide a plain mailto: link fallback and a server-validated form action so contact remains available if JS is disabled or client-side handlers fail.",
+    "status": "pending",
+    "created_at": "2026-09-01 10:42:48",
+    "updated_at": "2026-09-01 10:42:48"
+  }
+]
