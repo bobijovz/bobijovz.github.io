@@ -6,9 +6,11 @@
     "node": ">=18"
   },
   "scripts": {
-    "validate:frontmatter": "node ./scripts/validate-frontmatter.js"
+    "validate:frontmatter": "node ./scripts/validate-frontmatter.js",
+    "lhci:autorun": "lhci autorun --config=./lighthouseci/lhci.yml"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.10.2",
     "gray-matter": "^4.0.3",
     "yaml": "^2.3.1"
   }
