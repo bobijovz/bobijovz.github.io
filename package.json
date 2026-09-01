@@ -1,0 +1,15 @@
+{
+  "name": "myportfolio",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "validate:frontmatter": "node ./scripts/validate-frontmatter.js"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "yaml": "^2.3.1"
+  }
+}
