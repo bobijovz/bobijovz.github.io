@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -18,5 +20,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run frontmatter validator
-        run: npm run validate:frontmatter
+      - name: Get changed files for PR
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          echo "Fetching base branch..."
+          git fetch origin ${{ github.event.pull_request.base.ref }} --depth=1 || true
+          git diff --name-only origin/${{ github.event.pull_request.base.ref }}...HEAD > changed_files.txt || true
+          echo "Changed files written to changed_files.txt"
+
+      - name: Run frontmatter validator (only changed files)
+        run: |
+          if [ -f changed_files.txt ] && [ -s changed_files.txt ]; then
+            npm run validate:frontmatter -- ./changed_files.txt
+          else
+            # fallback to validating all known content files
+            npm run validate:frontmatter
+          fi

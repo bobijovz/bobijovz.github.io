@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /*
-  Simple MDX frontmatter validator.
-  - Scans content/ and docs/ for .md and .mdx files
+  MDX frontmatter validator with optional changed-files input.
+  - When given a file path argument pointing to a newline-separated list of files,
+    validates only those files (filtering to supported extensions).
+  - Otherwise scans content/ and docs/ for .md and .mdx files.
   - Validates required frontmatter fields: title, summary, published, draft, tags
   - Exits with non-zero code on validation failures
 */
@@ -42,11 +44,32 @@ function checkFile(file) {
   return missing;
 }
 
-let files = [];
-for (const d of scanDirs) {
-  const full = path.join(ROOT, d);
-  files = files.concat(walk(full));
+function readChangedFilesList(listPath) {
+  try {
+    if (!fs.existsSync(listPath)) return [];
+    const text = fs.readFileSync(listPath, 'utf8').trim();
+    if (!text) return [];
+    // split on newlines, filter by extension
+    return text.split(/\r?\n/).map(s => s.trim()).filter(Boolean).map(p => path.join(ROOT, p)).filter(p => exts.includes(path.extname(p).toLowerCase()) && fs.existsSync(p));
+  } catch (err) {
+    console.error('Error reading changed files list:', err.message);
+    return [];
+  }
 }
+
+let files = [];
+const changedListArg = process.argv[2];
+if (changedListArg) {
+  files = readChangedFilesList(changedListArg);
+} else {
+  for (const d of scanDirs) {
+    const full = path.join(ROOT, d);
+    files = files.concat(walk(full));
+  }
+}
+
+// dedupe
+files = Array.from(new Set(files));
 
 if (files.length === 0) {
   console.log('No markdown/MDX files found to validate.');
