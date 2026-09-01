@@ -1,0 +1,34 @@
+# Preview build for pull requests. Builds the site and uploads the static output
+# as an artifact named `preview-site`. Reviewers can download the artifact or
+# view logs; adapt `npm run build` and export steps to your project commands.
+name: Preview Build
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        # Use your project's build command. For Next.js static export this may be: npm run build && npm run export
+        run: |
+          npm run build --if-present
+          npm run export --if-present
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: preview-site
+          path: out/

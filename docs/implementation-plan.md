@@ -14,7 +14,7 @@ status: planning-ready
 - Configure linting/formatting
 - Establish design tokens
 - Establish folder structure
-- Configure preview deployment
+- Configure preview deployment using GitHub Actions (preview builds on pull requests)
 
 ### Epic 2 — Global UI
 - Header
@@ -66,7 +66,7 @@ status: planning-ready
 ### Epic 7 — Production
 - Domain
 - Analytics
-- Production deployment
+- Production deployment to GitHub Pages via GitHub Actions
 - Final content review
 - Final visual review
 

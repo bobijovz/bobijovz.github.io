@@ -17,7 +17,7 @@ Recommended stack:
 - MDX
 - CSS/design tokens
 - GitHub
-- Vercel
+- GitHub Pages + GitHub Actions (CI/CD)
 
 No database or runtime backend is required for V1.
 
@@ -42,7 +42,7 @@ Next.js Application
 │   ├── Projects
 │   └── Experience
 ├── Static Generation
-└── Vercel
+└── GitHub Pages (deployed via GitHub Actions)
 ```
 
 ## Rendering
@@ -143,7 +143,7 @@ Per-route title, description, canonical URL, Open Graph metadata and appropriate
 Use privacy-conscious analytics. Track only useful events such as case-study opens, résumé clicks and contact/social clicks.
 
 ## Deployment
-GitHub to CI/preview to Vercel to production.
+GitHub -> GitHub Actions CI (preview builds) -> GitHub Pages production.
 
 ## Security
 No authentication, database credentials or custom server secrets required for V1. Use mail links rather than a custom contact backend initially.
